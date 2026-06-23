@@ -6,14 +6,21 @@ package main
 
 import "fmt"
 
+// Stack is a last-in-first-out (LIFO) collection of integers backed by a slice.
+// The items field holds the elements with the top of the stack at the end.
 type Stack struct {
 	items []int
 }
 
+// Push adds v to the top of the stack by appending it to the items slice. It
+// uses a pointer receiver so the underlying slice is updated in place.
 func (s *Stack) Push(v int) {
 	s.items = append(s.items, v)
 }
 
+// Pop removes and returns the element at the top of the stack along with true.
+// If the stack is empty it returns (0, false), following the comma-ok pattern so
+// callers can distinguish an empty stack from a zero value.
 func (s *Stack) Pop() (int, bool) {
 	if len(s.items) == 0 {
 		return 0, false
@@ -24,11 +31,15 @@ func (s *Stack) Pop() (int, bool) {
 	return v, true
 }
 
+// Len returns the number of elements currently on the stack.
 func (s *Stack) Len() int {
 	return len(s.items)
 
 }
 
+// main is the entry point. It pushes three values onto a stack, prints the
+// length, then repeatedly pops until empty, printing each popped value to
+// demonstrate LIFO ordering.
 func main() {
 	var s Stack
 	s.Push(1)

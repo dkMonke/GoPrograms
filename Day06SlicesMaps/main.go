@@ -7,31 +7,34 @@ package main
 import (
 	"fmt"
 	"sort"
-	)
+)
 
-
+// main is the entry point. It builds a word-frequency map from a sample slice,
+// collects and alphabetically sorts the map keys for deterministic output, and
+// prints each word with its count. It then demonstrates slice aliasing: mutating
+// the first element of a sub-slice (half) also changes the backing array shared
+// with the original slice (s), so both print the modified value.
 func main() {
 
-	words := []string{"the","cat","sat","on","the","mat","the","cat"}
+	words := []string{"the", "cat", "sat", "on", "the", "mat", "the", "cat"}
 	counts := make(map[string]int)
-	for _,w := range words {
+	for _, w := range words {
 		counts[w]++
 	}
 
-
-	keys := make([]string,0,len(counts))
+	keys := make([]string, 0, len(counts))
 	for k := range counts {
-		keys = append(keys,k)
+		keys = append(keys, k)
 	}
 	sort.Strings(keys)
-	for _,k := range keys {
-		fmt.Printf("%s: %d\n",k,counts[k])
+	for _, k := range keys {
+		fmt.Printf("%s: %d\n", k, counts[k])
 	}
 
-	s:= []int{1,2,3,4,5}
+	s := []int{1, 2, 3, 4, 5}
 	half := s[:3]
 	half[0] = 999
-	fmt.Println("s:",s)
-	fmt.Println("half:",half)
+	fmt.Println("s:", s)
+	fmt.Println("half:", half)
 
 }

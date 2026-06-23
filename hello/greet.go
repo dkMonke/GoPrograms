@@ -6,16 +6,17 @@ package main
 import (
 	"fmt"
 	"os"
-	)
+)
 
+// main is the program entry point. It prints the argument count, then greets
+// each command-line argument with "Hello, <name>." If no arguments are
+// supplied it prints the default "Hello, world." greeting.
 func main() {
-	fmt.Printf("%d",len(os.Args))
+	fmt.Printf("%d", len(os.Args))
 	if len(os.Args) <= 1 {
-	fmt.Println("Hello, world.")
+		fmt.Println("Hello, world.")
 	}
-	for i := 1; i<len(os.Args); i++ {
-	fmt.Printf("Hello, %s.\n",os.Args[i])
+	for i := 1; i < len(os.Args); i++ {
+		fmt.Printf("Hello, %s.\n", os.Args[i])
 	}
 }
-
-

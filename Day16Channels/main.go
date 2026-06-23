@@ -10,6 +10,10 @@ import (
 	"time"
 )
 
+// worker consumes jobs from the receive-only jobs channel until it is closed.
+// For each job it prints a processing message, sleeps a random number of
+// seconds (0-9) to simulate variable work, and sends the doubled job value to
+// the send-only results channel. id identifies the worker in log output.
 func worker(id int, jobs <-chan int, results chan<- int) {
 
 	for j := range jobs {
@@ -20,6 +24,11 @@ func worker(id int, jobs <-chan int, results chan<- int) {
 
 }
 
+// main implements a worker-pool pattern. It creates buffered jobs and results
+// channels, starts three worker goroutines, enqueues five jobs, and closes the
+// jobs channel to signal the workers to stop once the queue is drained. It
+// then receives and prints all five results. Buffering lets the producer
+// enqueue without blocking on slow workers.
 func main() {
 	jobs := make(chan int, 10)
 	results := make(chan int, 10)

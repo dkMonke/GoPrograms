@@ -9,6 +9,10 @@ import (
 	"time"
 )
 
+// say prints the string s together with an index three times. When s equals
+// "world" it sleeps 100ms after each print, deliberately yielding the
+// processor so a concurrently running say goroutine has time to interleave
+// its output. This demonstrates cooperative scheduling between goroutines.
 func say(s string) {
 	for i := 0; i < 3; i++ {
 		fmt.Println(s, i)
@@ -18,6 +22,10 @@ func say(s string) {
 	}
 }
 
+// main runs say("Hello") concurrently as a goroutine while running
+// say("world") directly on the main goroutine. The "world" call blocks main
+// long enough (via its sleeps) for the "Hello" goroutine to print before the
+// program exits, illustrating basic goroutine concurrency.
 func main() {
 	go say("Hello")
 	say("world")

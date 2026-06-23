@@ -11,6 +11,12 @@ import (
 	"time"
 )
 
+// fanIn merges the given slice of receive-only input channels into a single
+// receive-only output channel and returns it. It launches one goroutine per
+// input channel to forward every value into the shared out channel, and uses
+// a sync.WaitGroup so that out is closed exactly once, after all inputs have
+// been drained. The returned channel can be ranged over until every source
+// is exhausted.
 func fanIn(inputs []<-chan string) <-chan string {
 	out := make(chan string)
 	var wg sync.WaitGroup
@@ -33,6 +39,10 @@ func fanIn(inputs []<-chan string) <-chan string {
 	return out
 }
 
+// main creates three producer goroutines that emit strings at different rates
+// (every 100ms, 150ms, and 300ms) and close their channels when done. It
+// merges them with fanIn and ranges over the merged channel, printing values
+// as they arrive in whatever interleaved order the producers deliver them.
 func main() {
 
 	ch1 := make(chan string)

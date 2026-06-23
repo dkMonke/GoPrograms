@@ -8,6 +8,11 @@ import (
 	"fmt"
 )
 
+// sum adds together a variadic list of values of any type, returning the
+// running total as a float64. A type switch handles int and float64 operands;
+// encountering a string returns a descriptive error, and any other unsupported
+// type returns an error naming its index and dynamic type. On any error the
+// returned total is 0.
 func sum(value ...any) (float64, error) {
 	var total float64
 	for i, v := range value {
@@ -25,6 +30,9 @@ func sum(value ...any) (float64, error) {
 	return total, nil
 }
 
+// main exercises sum twice: once with only numeric values (succeeding) and
+// once including a string (failing), printing the results and errors to show
+// both the happy path and error handling.
 func main() {
 	n, err := sum(1, 2.5, 3, 4.5)
 	fmt.Println(n, err)

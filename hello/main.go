@@ -8,11 +8,12 @@ import (
 	"os"
 )
 
+// main is the program entry point. It greets a name taken from the first
+// command-line argument, defaulting to "world" when no argument is provided.
 func main() {
 	name := "world"
-	if len(os.Args) >1 {
-	name = os.Args[1]
+	if len(os.Args) > 1 {
+		name = os.Args[1]
 	}
-	fmt.Printf("Hello, %s.\n",name)
+	fmt.Printf("Hello, %s.\n", name)
 }
-

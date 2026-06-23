@@ -9,6 +9,9 @@ import (
 	"library/library"
 )
 
+// main exercises the imported library package: it constructs a library.Book,
+// creates a library.Library and adds the book, then borrows and returns it,
+// printing the catalogue state and any errors after each operation.
 func main() {
 	Book1 := library.Book{
 		Title:     "TestBook",

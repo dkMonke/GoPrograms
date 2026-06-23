@@ -9,6 +9,10 @@ import (
 	"fmt"
 )
 
+// prettyPrintArr prints each element of the obj slice on its own line, using a
+// type switch to format values according to their dynamic type: nil, bool, int
+// (and int64), float64 (two decimals), and string. Values whose type is not
+// handled are silently skipped.
 func prettyPrintArr(obj []any) {
 	for _, v := range obj {
 		switch x := v.(type) {
@@ -29,6 +33,12 @@ func prettyPrintArr(obj []any) {
 		}
 	}
 }
+
+// prettyPrint walks the values of the obj map and prints each one formatted by
+// its dynamic type via a type switch. Scalars (nil, bool, int/int64, float64,
+// quoted string) print directly, while nested []any and map[string]any values
+// recurse into prettyPrintArr and prettyPrint respectively. Map iteration order
+// is not deterministic, so output ordering may vary between runs.
 func prettyPrint(obj map[string]any) {
 	for _, v := range obj {
 		switch x := v.(type) {
@@ -59,6 +69,8 @@ func prettyPrint(obj map[string]any) {
 	}
 }
 
+// main builds a sample map containing scalars, a nested slice, and a nested
+// map, then calls prettyPrint to demonstrate recursive, type-aware formatting.
 func main() {
 
 	obj := map[string]any{"a": 1, "b": []any{2, "three", nil}, "c": 3.1456, "d": map[string]any{"aa": 1, "bb": 1}}

@@ -10,6 +10,12 @@ import (
 	"time"
 )
 
+// work simulates a unit of concurrent work for the worker identified by id.
+// It sleeps for a duration proportional to id (id * 100ms) to mimic
+// variable-length tasks, printing messages when it starts and finishes. The
+// wg pointer lets it signal completion to the caller; defer wg.Done()
+// guarantees the WaitGroup counter is decremented even if the function
+// returns early.
 func work(id int, wg *sync.WaitGroup) {
 	defer wg.Done()
 	fmt.Printf("worker %d starting\n", id)
@@ -17,6 +23,10 @@ func work(id int, wg *sync.WaitGroup) {
 	fmt.Printf("worker %d dones\n", id)
 }
 
+// main launches five work goroutines and uses a sync.WaitGroup to wait for
+// all of them to complete. It calls wg.Add(1) before starting each goroutine
+// and wg.Wait() blocks until every worker has called wg.Done(), after which
+// "all done" is printed. This ensures main does not exit prematurely.
 func main() {
 	var wg sync.WaitGroup
 	for i := 1; i <= 5; i++ {

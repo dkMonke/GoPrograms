@@ -9,6 +9,10 @@ import (
 	"testing"
 )
 
+// TestDivide is a table-driven test for the Divide function. It defines a slice
+// of named cases (inputs a and b, expected result want, and expected wantErr),
+// then runs each as a sub-test via t.Run. errors.Is verifies the returned error
+// matches the expected sentinel, and the numeric result is compared against want.
 func TestDivide(t *testing.T) {
 	cases := []struct {
 		name    string

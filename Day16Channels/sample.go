@@ -9,6 +9,10 @@ import (
 	"time"
 )
 
+// producer sends the integers 0 through 4 into the send-only channel ch,
+// pausing two seconds between sends to simulate slow production. It closes ch
+// via defer once all values are sent so a ranging consumer knows to stop.
+// Because ch is unbuffered, each send blocks until the consumer receives.
 func producer(ch chan<- int) {
 
 	defer close(ch)
@@ -22,6 +26,10 @@ func producer(ch chan<- int) {
 
 }
 
+// main creates an unbuffered channel, runs producer as a goroutine to feed it,
+// and ranges over the channel to receive and print each value as it arrives.
+// The range loop blocks waiting for each send and exits when producer closes
+// the channel.
 func main() {
 
 	ch := make(chan int)

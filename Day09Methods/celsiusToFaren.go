@@ -10,17 +10,29 @@ import (
 	"strconv"
 )
 
+// Celsius is a named float64 type representing a temperature in degrees Celsius.
 type Celsius float64
+
+// Farenheit is a named float64 type representing a temperature in degrees Fahrenheit.
 type Farenheit float64
 
+// ToFarenheit converts the Celsius value to its Fahrenheit equivalent using the
+// formula (c * 9/5) + 32 and returns the result as a Farenheit value.
 func (c Celsius) ToFarenheit() Farenheit {
 	return Farenheit(c)*9/5 + 32
 }
 
+// ToCelius converts the Farenheit value to its Celsius equivalent using the
+// formula (f - 32) * 5/9 and returns the result as a Celsius value.
 func (f Farenheit) ToCelius() Celsius {
 	return (Celsius(f) - 32) * 5 / 9
 }
 
+// main is the entry point. It reads a target unit and a numeric value from the
+// command-line arguments (os.Args[1] and os.Args[2]), parses the value with
+// strconv.ParseFloat, and prints the converted temperature. A target of
+// "Farenheit" treats the input as Celsius and converts to Fahrenheit; any other
+// value treats the input as Fahrenheit and converts to Celsius.
 func main() {
 	convertType := os.Args[1]
 	convertValue, err := strconv.ParseFloat(os.Args[2], 64)

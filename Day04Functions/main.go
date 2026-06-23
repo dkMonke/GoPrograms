@@ -5,18 +5,22 @@ package main
 
 import "fmt"
 
+// main is the program entry point. It demonstrates several Go control-flow
+// constructs: an if statement with an initialiser, building and ranging over a
+// map of country-to-capital, a tagless switch implementing letter-grade logic,
+// and a deferred Println that runs after the surrounding output.
 func main() {
-	if x := 42;x > 10 {
-		fmt.Println("big",x)
+	if x := 42; x > 10 {
+		fmt.Println("big", x)
 	}
 
 	capitals := map[string]string{
-		"France" : "Paris",
-		"Japan" : "Tokyo",
-		"USA" : "Washington",
+		"France": "Paris",
+		"Japan":  "Tokyo",
+		"USA":    "Washington",
 	}
-	for country,capital := range capitals {
-		fmt.Printf("%s->%s\n",country,capital)
+	for country, capital := range capitals {
+		fmt.Printf("%s->%s\n", country, capital)
 	}
 
 	score := 85
@@ -25,7 +29,7 @@ func main() {
 		fmt.Println("A")
 	case score >= 80:
 		fmt.Println("B")
-	default:	
+	default:
 		fmt.Println("C or below")
 	}
 	defer fmt.Println("goodbye")
