@@ -1,0 +1,26 @@
+package main
+
+import (
+	"fmt"
+	)
+
+func groupByLength(words []string) map[int]string {
+	returnMap := make(map[int]string)
+	
+	for item := range words {
+	if _,ok := returnMap[len(words[item])];!ok{
+	fmt.Printf("%d %q",len(words[item]),words[item])
+	returnMap[len(words[item])] := make([]string,0)
+	}
+	//returnMap[len(words[item])] = append(returnMap[len(words[item])],words[item])
+	}
+	return returnMap
+}
+
+
+func main() {
+	
+	output := groupByLength([]string{"this","worlds","aaa", "bbb", "ccc"})
+	fmt.Println(output)
+
+}
