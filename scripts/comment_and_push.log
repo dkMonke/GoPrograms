@@ -43,3 +43,14 @@ This file already has complete, in-depth doc comments on the file header, every 
 [2026-06-24 11:47:24] Handing off to daily_push.sh
 [2026-06-25 11:38:10] No new/edited .go files to document.
 [2026-06-25 11:38:10] Handing off to daily_push.sh
+[2026-06-26 11:33:52] Found 1 changed .go file(s): Day18Sync/assignment.go
+[2026-06-26 11:33:52] Documenting Day18Sync/assignment.go ...
+Done. Added a file-level header and doc comments for `RateLimiter`, `NewRateLimiter`, `Allow`, and `main`. No code was changed.
+
+Note: I documented behavior as written, which surfaced two likely bugs in the existing code (not fixed, per your rules):
+- `NewRateLimiter` never sets `perSecond`, so the limit defaults to 0.
+- `Allow` does `defer r.mu.Lock()` instead of `r.mu.Unlock()`, which will deadlock on the second call.
+
+Want me to fix those?
+[2026-06-26 12:35:36] Documented Day18Sync/assignment.go
+[2026-06-26 12:35:36] Handing off to daily_push.sh
