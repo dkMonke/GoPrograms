@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod +x /Users/dinesh.sampath/GoPrograms/scripts/comment_and_push.sh)",
+      "Bash(awk '{ $1=\"\"; sub\\(/^ +/,\"\"\\); print }')",
+      "Bash(grep -E '\\\\.go$')",
+      "Bash(claude -p --permission-mode acceptEdits --allowedTools \"Read Edit\")",
+      "Bash(crontab -l)",
+      "Bash(launchctl list *)",
+      "Bash(bash /Users/dinesh.sampath/GoPrograms/scripts/comment_and_push.sh)",
+      "Bash(echo \"=== EXIT: $? ===\")",
+      "Bash(gofmt -w /Users/dinesh.sampath/GoPrograms/Day18Sync/mutexexample.go /Users/dinesh.sampath/GoPrograms/Day18Sync/nonmutexexample.go)",
+      "Bash(gofmt -w /Users/dinesh.sampath/GoPrograms/Day12Packages/assignment.go /Users/dinesh.sampath/GoPrograms/Day12Packages/main.go /Users/dinesh.sampath/GoPrograms/Day12Packages/Day13Testing/mathlib/mathlib_test.go /Users/dinesh.sampath/GoPrograms/Day12Packages/Day13Testing/mathlib/mathlib.go /Users/dinesh.sampath/GoPrograms/Day12Packages/greetapp/greet/greet.go /Users/dinesh.sampath/GoPrograms/Day12Packages/greetapp/main.go /Users/dinesh.sampath/GoPrograms/Day12Packages/library/library/book.go /Users/dinesh.sampath/GoPrograms/Day12Packages/library/library/library.go /Users/dinesh.sampath/GoPrograms/Day12Packages/library/main.go)",
+      "Bash(gofmt -w /Users/dinesh.sampath/GoPrograms/Day06SlicesMaps/assignment.go /Users/dinesh.sampath/GoPrograms/Day06SlicesMaps/main.go /Users/dinesh.sampath/GoPrograms/Day08StructPointer/assignment.go /Users/dinesh.sampath/GoPrograms/Day08StructPointer/main.go /Users/dinesh.sampath/GoPrograms/Day09Methods/assignment.go /Users/dinesh.sampath/GoPrograms/Day09Methods/celsiusToFaren.go /Users/dinesh.sampath/GoPrograms/Day09Methods/main.go)",
+      "Bash(gofmt -w Day15GoRoutines/assignment.go Day15GoRoutines/concurrencyrace.go Day15GoRoutines/main.go Day15GoRoutines/sample.go Day16Channels/assignment.go Day16Channels/main.go Day16Channels/sample.go Day17Select/assignment.go Day17Select/main.go)",
+      "Bash(gofmt -w Day10Interface/assignment.go Day10Interface/main.go Day11TypeAssertions/assignment.go Day11TypeAssertions/main.go Day11TypeAssertions/task1.go varteach/main.go)",
+      "Bash(gofmt -w Day03Functions/excersise.go Day03Functions/main.go Day04Functions/assignment.go Day04Functions/main.go Day05Errors/assignment.go Day05Errors/main.go hello/greet.go hello/main.go hello/varibles.go)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(grep -vE '^-[[:space:]]*$')",
+      "Bash(md5)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
+    ]
+  }
+}
